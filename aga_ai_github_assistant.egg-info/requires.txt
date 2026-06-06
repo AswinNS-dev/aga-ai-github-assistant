@@ -1,0 +1,13 @@
+gradio>=4.0.0
+fastapi
+uvicorn
+langchain
+langchain-groq
+langchain-core
+PyGithub
+python-dotenv
+httpx
+fpdf2
+tabulate
+tenacity
+click

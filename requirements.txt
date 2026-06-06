@@ -1,0 +1,23 @@
+# Core Web & UI
+gradio>=4.0.0
+fastapi
+uvicorn
+
+# AI & LLM
+langchain
+langchain-groq
+langchain-core
+
+# GitHub & API
+PyGithub
+python-dotenv
+httpx
+
+# Documentation & Utilities
+python-magic  # For file type detection
+fpdf2         # For PDF generation
+tabulate      # For CLI tables
+tenacity      # For retry logic
+
+# CLI
+click         # For the 'aga' command
