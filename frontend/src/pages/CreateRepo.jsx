@@ -77,6 +77,17 @@ export default function CreateRepo() {
           </a>
         </div>
       )}
+
+      <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-4">
+        <h2 className="text-sm font-semibold text-[#58a6ff] mb-2">📦 Use AGA via pip</h2>
+        <p className="text-xs text-[#8b949e] mb-3">You can also create repos and push files directly from your terminal using the AGA CLI.</p>
+        <div className="flex flex-col gap-1.5">
+          <code className="bg-[#0d1117] text-green-400 text-xs px-3 py-1.5 rounded-md">pip install aga-ai-github-assistant</code>
+          <code className="bg-[#0d1117] text-green-400 text-xs px-3 py-1.5 rounded-md">aga create-repo my-new-repo --description "My project" --public</code>
+          <code className="bg-[#0d1117] text-green-400 text-xs px-3 py-1.5 rounded-md">aga push</code>
+          <code className="bg-[#0d1117] text-green-400 text-xs px-3 py-1.5 rounded-md">aga analyze https://github.com/username/repo</code>
+        </div>
+      </div>
     </div>
   )
 }

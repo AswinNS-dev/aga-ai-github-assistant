@@ -176,6 +176,8 @@ export default function RepoManager() {
             className="bg-[#238636] hover:bg-[#2ea043] disabled:opacity-50 text-white font-semibold py-2.5 rounded-md transition">
             {pushing ? 'Pushing...' : 'Deploy to GitHub'}
           </button>
+
+          <p className="text-xs text-[#8b949e] text-center">⚠️ NOTE: Maximum file size that can be pushed is <span className="text-white font-semibold">25 MB</span></p>
         </div>
       </div>
     </div>
