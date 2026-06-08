@@ -38,23 +38,29 @@ def read_file(path):
             return f.read()
 
 
-def push_files(client, repo_name, file_map, commit_message, branch):
+def push_files(client, repo_name, file_map, commit_message, branch, repo_prefix=""):
     repo = client.client.get_repo(repo_name)
     pushed, failed = [], []
 
     for repo_path, local_path in file_map.items():
+        # Prepend the target repo folder prefix if specified
+        if repo_prefix:
+            full_repo_path = f"{repo_prefix.strip('/')}/{repo_path}"
+        else:
+            full_repo_path = repo_path
+
         content = read_file(local_path)
         try:
             try:
-                existing = repo.get_contents(repo_path, ref=branch)
-                repo.update_file(repo_path, commit_message, content, existing.sha, branch=branch)
+                existing = repo.get_contents(full_repo_path, ref=branch)
+                repo.update_file(full_repo_path, commit_message, content, existing.sha, branch=branch)
             except Exception:
-                repo.create_file(repo_path, commit_message, content, branch=branch)
-            pushed.append(repo_path)
-            click.echo(f"  + {repo_path}")
+                repo.create_file(full_repo_path, commit_message, content, branch=branch)
+            pushed.append(full_repo_path)
+            click.echo(f"  + {full_repo_path}")
         except Exception as e:
-            failed.append(repo_path)
-            click.echo(f"  x {repo_path} - {str(e)}")
+            failed.append(full_repo_path)
+            click.echo(f"  x {full_repo_path} - {str(e)}")
 
     return pushed, failed
 
@@ -91,12 +97,21 @@ def push():
     push_type = click.prompt("Push single file or entire folder?", type=click.Choice(["file", "folder"]), default="folder")
 
     if push_type == "file":
-        file_path = click.prompt("File path")
+        file_path = click.prompt("Local file path")
         file_map  = {os.path.basename(file_path): os.path.abspath(file_path)}
     else:
-        folder_path = click.prompt("Folder path (press Enter for current directory)", default=".")
+        folder_path = click.prompt("Local folder path (press Enter for current directory)", default=".")
         file_map    = collect_files(folder_path)
         click.echo(f"Found {len(file_map)} files to push...")
+
+    repo_prefix = click.prompt(
+        "Target folder in repo (press Enter to push to repo root)",
+        default=""
+    )
+    if repo_prefix:
+        click.echo(f"Files will be placed under: {repo_prefix.strip('/')}/")
+    else:
+        click.echo("Files will be placed at the repo root.")
 
     sample     = ", ".join(list(file_map.keys())[:10])
     commit_msg = ai.generate_commit_message(f"Files: {sample}")
@@ -107,7 +122,7 @@ def push():
         return
 
     click.echo("\nPushing...")
-    pushed, failed = push_files(client, full_name, file_map, commit_msg, branch)
+    pushed, failed = push_files(client, full_name, file_map, commit_msg, branch, repo_prefix)
     click.echo(f"\nDone! {len(pushed)} pushed, {len(failed)} failed.")
 
 
