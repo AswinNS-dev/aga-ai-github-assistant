@@ -325,7 +325,7 @@ with gr.Blocks(title="AGA - AI GitHub Assistant") as demo:
             fn=None,
             js="() => { navigator.clipboard.writeText('pip install aga-ai-github-assistant'); }"
         )
-    gr.Markdown("AGA Platform v1.2 | Powered by Llama 3.3 Intelligence", elem_id="footer")
+    gr.Markdown("AGA Platform v1.3.3 | Powered by Llama 3.3 Intelligence", elem_id="footer")
 
     # --- Event Handlers ---
     auth_btn.click(
