@@ -9,6 +9,7 @@ import RepoManager from './pages/RepoManager'
 import Analyzer from './pages/Analyzer'
 import ReadmeGen from './pages/ReadmeGen'
 import CreateRepo from './pages/CreateRepo'
+import CLI from './pages/CLI'
 
 export default function App() {
   return (
@@ -28,6 +29,7 @@ export default function App() {
           <Route path="/analyzer" element={<ProtectedRoute><Analyzer /></ProtectedRoute>} />
           <Route path="/readme" element={<ProtectedRoute><ReadmeGen /></ProtectedRoute>} />
           <Route path="/create-repo" element={<ProtectedRoute><CreateRepo /></ProtectedRoute>} />
+          <Route path="/cli" element={<ProtectedRoute><CLI /></ProtectedRoute>} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>

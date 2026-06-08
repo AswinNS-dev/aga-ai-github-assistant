@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/AuthContext'
-import { GitBranch, LayoutDashboard, FolderGit2, Search, FileText, Plus, LogOut } from 'lucide-react'
+import { GitBranch, LayoutDashboard, FolderGit2, Search, FileText, Plus, LogOut, Terminal } from 'lucide-react'
 import toast from 'react-hot-toast'
 import { useState } from 'react'
 
@@ -10,6 +10,7 @@ const links = [
   { to: '/analyzer', icon: <Search size={18} />, label: 'Deep Analyzer' },
   { to: '/readme', icon: <FileText size={18} />, label: 'README Gen' },
   { to: '/create-repo', icon: <Plus size={18} />, label: 'Create Repo' },
+  { to: '/cli', icon: <Terminal size={18} />, label: 'CLI & pip' },
 ]
 
 export default function Layout({ children }) {
