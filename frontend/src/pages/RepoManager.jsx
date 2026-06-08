@@ -98,6 +98,16 @@ export default function RepoManager() {
     <div className="flex flex-col gap-6">
       <h1 className="text-2xl font-bold">Repo Manager</h1>
 
+      <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-4">
+        <h2 className="text-sm font-semibold text-[#58a6ff] mb-2">📖 How it works</h2>
+        <ol className="text-xs text-[#8b949e] flex flex-col gap-1 list-decimal list-inside">
+          <li>Select a repository from the dropdown to browse its files</li>
+          <li>Click a file to select its path, or upload a new file from your computer</li>
+          <li>Hit <span className="text-white">Deploy to GitHub</span> — AI will auto-generate a commit message if you leave it blank</li>
+          <li>Use the <span className="text-white">🗑 trash icon</span> next to any file to delete it from the repo</li>
+        </ol>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Left - Explorer */}
         <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-5 flex flex-col gap-4">

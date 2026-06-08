@@ -31,6 +31,15 @@ export default function ReadmeGen() {
     <div className="flex flex-col gap-6 max-w-3xl">
       <h1 className="text-2xl font-bold">README Generator</h1>
 
+      <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-4">
+        <h2 className="text-sm font-semibold text-[#58a6ff] mb-2">📖 How it works</h2>
+        <ol className="text-xs text-[#8b949e] flex flex-col gap-1 list-decimal list-inside">
+          <li>Paste your project description, structure, or tech stack in the text box</li>
+          <li>Pick a README style (professional, startup, minimal, etc.)</li>
+          <li>Click <span className="text-white">Generate README</span> and copy the output</li>
+        </ol>
+      </div>
+
       <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-5 flex flex-col gap-4">
         <textarea value={context} onChange={(e) => setContext(e.target.value)}
           placeholder="Paste your project structure, description, or tech stack..."

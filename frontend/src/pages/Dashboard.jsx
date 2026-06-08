@@ -45,6 +45,25 @@ export default function Dashboard() {
         <p className="text-[#8b949e] text-sm mt-1">{auth.public_repos} repositories · AGA Dashboard</p>
       </div>
 
+      {/* How it works */}
+      <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-5">
+        <h2 className="text-sm font-semibold text-[#58a6ff] mb-3">📖 How it works</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          {[
+            { label: 'Repo Manager', desc: 'Browse your repos, upload files and deploy them with AI-generated commit messages.', to: '/repo-manager' },
+            { label: 'Deep Analyzer', desc: 'Paste any GitHub repo URL to get health scores and an AI architectural report.', to: '/analyzer' },
+            { label: 'README Generator', desc: 'Describe your project and generate a professional README in seconds.', to: '/readme' },
+            { label: 'Create Repo', desc: 'Instantly create a new GitHub repository without leaving the app.', to: '/create-repo' },
+          ].map((item) => (
+            <button key={item.to} onClick={() => navigate(item.to)}
+              className="text-left bg-[#0d1117] border border-[#30363d] hover:border-[#58a6ff] rounded-lg p-3 transition">
+              <div className="text-sm font-semibold text-white mb-1">{item.label}</div>
+              <div className="text-xs text-[#8b949e]">{item.desc}</div>
+            </button>
+          ))}
+        </div>
+      </div>
+
       {/* Quick Actions */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {quickActions.map((a) => (

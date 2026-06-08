@@ -33,6 +33,15 @@ export default function CreateRepo() {
     <div className="flex flex-col gap-6 max-w-lg">
       <h1 className="text-2xl font-bold">Create Repository</h1>
 
+      <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-4">
+        <h2 className="text-sm font-semibold text-[#58a6ff] mb-2">📖 How it works</h2>
+        <ol className="text-xs text-[#8b949e] flex flex-col gap-1 list-decimal list-inside">
+          <li>Enter a name for your new repository</li>
+          <li>Add an optional description and choose public or private</li>
+          <li>Click <span className="text-white">Create Repository</span> — it'll appear on your GitHub instantly</li>
+        </ol>
+      </div>
+
       <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-5 flex flex-col gap-4">
         <input value={name} onChange={(e) => setName(e.target.value)}
           placeholder="Repository name"

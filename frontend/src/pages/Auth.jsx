@@ -45,7 +45,7 @@ export default function Auth() {
             <div className="flex items-center gap-2 bg-[#0d1117] border border-[#30363d] rounded-md px-3 py-2 focus-within:border-[#58a6ff]">
               <GitBranch size={16} className="text-[#8b949e]" />
               <input
-                type="text"
+                type="password"
                 value={token}
                 onChange={(e) => setToken(e.target.value)}
                 placeholder="ghp_..."
@@ -59,7 +59,7 @@ export default function Auth() {
             <div className="flex items-center gap-2 bg-[#0d1117] border border-[#30363d] rounded-md px-3 py-2 focus-within:border-[#58a6ff]">
               <KeyRound size={16} className="text-[#8b949e]" />
               <input
-                type="text"
+                type="password"
                 value={groqKey}
                 onChange={(e) => setGroqKey(e.target.value)}
                 placeholder="gsk_..."

@@ -35,6 +35,15 @@ export default function Analyzer() {
     <div className="flex flex-col gap-6 max-w-3xl">
       <h1 className="text-2xl font-bold">Deep Analyzer</h1>
 
+      <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-4">
+        <h2 className="text-sm font-semibold text-[#58a6ff] mb-2">📖 How it works</h2>
+        <ol className="text-xs text-[#8b949e] flex flex-col gap-1 list-decimal list-inside">
+          <li>Paste any public or private GitHub repository URL</li>
+          <li>Choose an AI model for the analysis</li>
+          <li>Hit <span className="text-white">Start Deep Analysis</span> to get health scores and an AI architectural report</li>
+        </ol>
+      </div>
+
       <div className="bg-[#161b22] border border-[#21262d] rounded-xl p-5 flex flex-col gap-4">
         <input value={url} onChange={(e) => setUrl(e.target.value)}
           placeholder="https://github.com/username/repo"
