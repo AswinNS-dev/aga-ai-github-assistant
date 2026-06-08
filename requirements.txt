@@ -14,7 +14,6 @@ python-dotenv
 httpx
 
 # Documentation & Utilities
-python-magic  # For file type detection
 fpdf2         # For PDF generation
 tabulate      # For CLI tables
 tenacity      # For retry logic

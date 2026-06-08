@@ -1,0 +1,19 @@
+# Environment secrets
+.env
+
+# Python caching & builds
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.tox/
+.venv/
+venv/
+ENV/
+build/
+dist/
+*.egg-info/
+
+# Gradio cache
+.gradio/

@@ -1,5 +1,5 @@
 import os
-import magic
+import mimetypes
 from typing import List, Dict, Optional
 
 class ProjectScanner:
@@ -68,5 +68,7 @@ class ProjectScanner:
         }
 
     def detect_mime(self, file_path: str) -> str:
-        """Use libmagic to detect true file type."""
-        return magic.from_file(file_path, mime=True)
+        """Detect true file type using built-in mimetypes."""
+        mime_type, _ = mimetypes.guess_type(file_path)
+        return mime_type or "application/octet-stream"
+
