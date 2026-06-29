@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: aga-ai-github-assistant
-Version: 1.3.1
+Version: 1.3.4
 Summary: AI-powered GitHub assistant with file deployment, repo analysis, and README generation.
 License: MIT
 Requires-Python: >=3.9
