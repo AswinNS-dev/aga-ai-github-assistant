@@ -22,8 +22,15 @@ export default function Auth() {
       toast.success(`Welcome, ${res.data.name}!`)
       navigate('/dashboard')
     } catch (err: unknown) {
-      const error = err as { response?: { data?: { detail?: string } } }
-      toast.error(error.response?.data?.detail || 'Authentication failed')
+      const error = err as { response?: { data?: { detail?: string } }; message?: string }
+      if (!error.response) {
+        toast.error(
+          'Server may be waking up from sleep (Render free tier). Please wait ~30 seconds and try again!',
+          { duration: 6000 }
+        )
+      } else {
+        toast.error(error.response.data?.detail || 'Authentication failed')
+      }
     } finally {
       setLoading(false)
     }
