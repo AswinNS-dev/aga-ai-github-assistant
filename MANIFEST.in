@@ -1,0 +1,12 @@
+include README.md
+include pyproject.toml
+recursive-include aga *.py
+recursive-include app *.py
+recursive-include cli *.py
+recursive-exclude aga-ai-github-assistant *
+recursive-exclude tests *
+recursive-exclude backend *
+recursive-exclude .gradio *
+prune aga-ai-github-assistant
+prune tests
+prune backend

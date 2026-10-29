@@ -2,6 +2,7 @@
 gradio>=4.0.0
 fastapi
 uvicorn
+pandas
 
 # AI & LLM
 langchain
@@ -9,14 +10,9 @@ langchain-groq
 langchain-core
 
 # GitHub & API
-PyGithub
+PyGithub>=2.0.0
 python-dotenv
 httpx
 
-# Documentation & Utilities
-fpdf2         # For PDF generation
-tabulate      # For CLI tables
-tenacity      # For retry logic
-
 # CLI
-click         # For the 'aga' command
+click>=8.0.0

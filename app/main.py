@@ -65,6 +65,9 @@ def fetch_file_content(token, repo_full_name, file_path):
         gh = GitHubClient(token)
         repo = gh.client.get_repo(repo_full_name)
         content_file = repo.get_contents(file_path)
+        if isinstance(content_file, list):
+            return "(Directory selected - navigate into it using the explorer)", f"**Directory:** `{html.escape(file_path)}`"
+
         decoded_content = content_file.decoded_content.decode("utf-8", errors="ignore")
         
         details = f"""
@@ -94,12 +97,17 @@ def handle_explorer_click(token, repo_full_name, current_path, table_data, evt: 
     if table_data is None or repo_full_name is None:
         return table_data, current_path, ""
     
-    # Convert to list if it's a DataFrame
-    import pandas as pd
-    if isinstance(table_data, pd.DataFrame):
-        data_list = table_data.values.tolist()
-    else:
-        data_list = table_data
+    try:
+        import pandas as pd
+        if isinstance(table_data, pd.DataFrame):
+            data_list = table_data.values.tolist()
+        else:
+            data_list = table_data
+    except Exception:
+        if hasattr(table_data, "values") and hasattr(table_data.values, "tolist"):
+            data_list = table_data.values.tolist()
+        else:
+            data_list = list(table_data) if table_data is not None else []
         
     if not data_list:
         return table_data, current_path, ""
@@ -428,5 +436,8 @@ with gr.Blocks(title="AGA - AI GitHub Assistant") as demo:
     )
 
 if __name__ == "__main__":
-    demo.launch(server_port=int(os.getenv("PORT", 7860)), share=True, theme=gr.themes.Soft())
+    host = os.getenv("HOST", "0.0.0.0")
+    port = int(os.getenv("PORT", 7860))
+    share = os.getenv("GRADIO_SHARE", "False").lower() in ("true", "1")
+    demo.launch(server_name=host, server_port=port, share=share, theme=gr.themes.Soft())
 

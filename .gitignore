@@ -17,3 +17,7 @@ dist/
 
 # Gradio cache
 .gradio/
+
+# Frontend dependencies & builds
+node_modules/
+dist/
